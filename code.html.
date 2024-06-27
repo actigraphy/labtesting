@@ -5,38 +5,39 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(initCharts);
 
-    function initCharts() {
-      drawChart('dataInput1', 'chart_div1', 'Activity Data Day 1');
-      drawChart('dataInput2', 'chart_div2', 'Activity Data Day 2');
-      drawChart('dataInput3', 'chart_div3', 'Activity Data Day 3');
-      drawChart('dataInput4', 'chart_div4', 'Activity Data Day 4');
-      drawChart('dataInput5', 'chart_div5', 'Activity Data Day 5');
-      drawChart('dataInput6', 'chart_div6', 'Activity Data Day 6');
-      drawChart('dataInput7', 'chart_div7', 'Activity Data Day 7');
+    google.charts.setOnLoadCallback(initializeCharts);
+
+    function initializeCharts() {
+      drawChart('day1Input', 'day1Chart', 'Activity Data Day 1');
+      drawChart('day2Input', 'day2Chart', 'Activity Data Day 2');
+      drawChart('day3Input', 'day3Chart', 'Activity Data Day 3');
+      drawChart('day4Input', 'day4Chart', 'Activity Data Day 4');
+      drawChart('day5Input', 'day5Chart', 'Activity Data Day 5');
+      drawChart('day6Input', 'day6Chart', 'Activity Data Day 6');
+      drawChart('day7Input', 'day7Chart', 'Activity Data Day 7');
     }
 
     function drawChart(dataInputId, chartDivId, chartTitle) {
-      var rawData = document.getElementById(dataInputId).value;
-      var dataArray = rawData.split('\n').map(Number);
+      const rawData = document.getElementById(dataInputId).value;
+      const dataArray = rawData.split('\n').map(Number);
 
-      var data = new google.visualization.DataTable();
+      const data = new google.visualization.DataTable();
       data.addColumn('number', 'Minute');
       data.addColumn('number', 'Activity');
 
-      for (var i = 0; i < dataArray.length; i++) {
+      for (let i = 0; i < dataArray.length; i++) {
         data.addRow([i, dataArray[i]]);
       }
 
-      var options = {
+      const options = {
         title: chartTitle,
         hAxis: {title: 'Minute of the Day'},
         vAxis: {title: 'Activity Count'},
         legend: 'none'
       };
 
-      var chart = new google.visualization.LineChart(document.getElementById(chartDivId));
+      const chart = new google.visualization.LineChart(document.getElementById(chartDivId));
       chart.draw(data, options);
     }
   </script>
@@ -44,58 +45,58 @@
 <body>
   <div>
     <h1>Actigraphy Data Visualization Day 1 </h1>
-    <textarea id="dataInput1" rows="25" cols="80"></textarea>
+    <textarea id="day1Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput1', 'chart_div1', 'Activity Data Day 1')">Visualize</button>
-    <div id="chart_div1" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day1Input', 'day1Chart', 'Activity Data Day 1')">Visualize</button>
+    <div id="day1Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 2</h1>
-    <textarea id="dataInput2" rows="25" cols="80"></textarea>
+    <textarea id="day2Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput2', 'chart_div2', 'Activity Data Day 2')">Visualize</button>
-    <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day2Input', 'day2Chart', 'Activity Data Day 2')">Visualize</button>
+    <div id="day2Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 3 </h1>
-    <textarea id="dataInput3" rows="25" cols="80"></textarea>
+    <textarea id="day3Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput3', 'chart_div3', 'Activity Data Day 3')">Visualize</button>
-    <div id="chart_div3" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day3Input', 'day3Chart', 'Activity Data Day 3')">Visualize</button>
+    <div id="day3Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 4</h1>
-    <textarea id="dataInput4" rows="25" cols="80"></textarea>
+    <textarea id="day4Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput4', 'chart_div4', 'Activity Data Day 4')">Visualize</button>
-    <div id="chart_div4" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day4Input', 'day4Chart', 'Activity Data Day 4')">Visualize</button>
+    <div id="day4Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 5 </h1>
-    <textarea id="dataInput5" rows="25" cols="80"></textarea>
+    <textarea id="day5Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput5', 'chart_div5', 'Activity Data Day 5')">Visualize</button>
-    <div id="chart_div5" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day5Input', 'day5Chart', 'Activity Data Day 5')">Visualize</button>
+    <div id="day5Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 6 </h1>
-    <textarea id="dataInput6" rows="25" cols="80"></textarea>
+    <textarea id="day6Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput6', 'chart_div6', 'Activity Data Day 6')">Visualize</button>
-    <div id="chart_div6" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day6Input', 'day6Chart', 'Activity Data Day 6')">Visualize</button>
+    <div id="day6Chart" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div>
     <h1>Actigraphy Data Visualization Day 7 </h1>
-    <textarea id="dataInput7" rows="25" cols="80"></textarea>
+    <textarea id="day7Input" rows="25" cols="80"></textarea>
     <br>
-    <button onclick="drawChart('dataInput7', 'chart_div7', 'Activity Data Day 7')">Visualize</button>
-    <div id="chart_div7" style="width: 900px; height: 500px;"></div>
+    <button onclick="drawChart('day7Input', 'day7Chart', 'Activity Data Day 7')">Visualize</button>
+    <div id="day7Chart" style="width: 900px; height: 500px;"></div>
   </div>
 </body>
 </html>
